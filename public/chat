@@ -1,1 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chat</title>
+  <style>
+    .chat-container {
+      width: 400px;
+      height: 500px;
+      border: 1px solid #ccc;
+      overflow-y: scroll;
+    }
 
+    .message {
+      padding: 10px;
+      margin-bottom: 5px;
+      background-color: #f2f2f2;
+      border-radius: 5px;
+    }
+
+    .user-message {
+      background-color: #d2f4fc;
+    }
+
+    .bot-message {
+      background-color: #f8d4fc;
+    }
+
+    .input-container {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="message user-message">
+      User: Hello, how can I help you?
+    </div>
+    <div class="message bot-message">
+      Bot: I'm the chatbot. How can I assist you today?
+    </div>
+  </div>
+
+  <div class="input-container">
+    <input type="text" id="user-input" placeholder="Type your message...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+
+  <script>
+    function sendMessage() {
+      var userInput = document.getElementById('user-input').value;
+      var chatContainer = document.querySelector('.chat-container');
+
+      // Create user message element
+      var userMessage = document.createElement('div');
+      userMessage.classList.add('message', 'user-message');
+      userMessage.textContent = 'User: ' + userInput;
+
+      // Append user message to chat container
+      chatContainer.appendChild(userMessage);
+
+      // Simulate bot response
+      var botMessage = document.createElement('div');
+      botMessage.classList.add('message', 'bot-message');
+      botMessage.textContent = 'Bot: Thank you for your message.';
+
+      // Append bot message to chat container
+      chatContainer.appendChild(botMessage);
+
+      // Clear user input
+      document.getElementById('user-input').value = '';
+
+      // Scroll to the bottom of the chat container
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+  </script>
+</body>
+</html>
