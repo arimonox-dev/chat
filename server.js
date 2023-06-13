@@ -1,4 +1,5 @@
 import * as shared from 'http';
+import os from 'os';
 
 const ip = '127.0.0.1'
 const port = 3000
@@ -13,7 +14,7 @@ const event = function(req,res){
 res.output={
     jsonrpc:'2.0',
     id:0,
-    result:'last'
+    result:os.networkInterfaces()
 }
 res.writeHead(200,cros);
 res.end(JSON.stringify(res.output)); 
