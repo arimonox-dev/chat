@@ -12,7 +12,7 @@ const ips=d=>{
     }
     return ip[d]
 }
-const ip = ips("telemetry1_sb")
+const ip = ips("vinternal_1")
 const port = 3000
 
 const cros = {
