@@ -1,7 +1,7 @@
 import * as shared from 'http';
 
 const ip = '127.0.0.1'
-const port = 4001
+const port = 3000
 
 const cros = {
 'Access-Control-Allow-Origin': '*',
@@ -9,7 +9,7 @@ const cros = {
 'Access-Control-Max-Age': 2592000,
 };
 
-const os = function(req,res){
+const event = function(req,res){
 res.output={
     jsonrpc:'2.0',
     id:0,
@@ -19,7 +19,7 @@ res.writeHead(200,cros);
 res.end(JSON.stringify(output)); 
 }
 
-const server = shared.createServer(os)
+const server = shared.createServer(event)
 
 
 server.listen(port,ip,()=>{
