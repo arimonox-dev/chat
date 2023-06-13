@@ -1,8 +1,19 @@
 import * as shared from 'http';
 import os from 'os';
 
-const ip = '127.0.0.1'
-const port = 3000
+
+const ips=d=>{
+    let ip = {}
+    let osn = os.networkInterfaces()
+    for(var i in osn){
+        let f = 0
+        osn[i].map(i=> i.family == "IPv4" ? f= i.address:0)
+        ip[i]=f
+    }
+    return ip[d]
+}
+const ip = ips("telemetry1_sb")
+const port = 40001
 
 const cros = {
 'Access-Control-Allow-Origin': '*',
