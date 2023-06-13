@@ -16,7 +16,7 @@ res.output={
     result:'last'
 }
 res.writeHead(200,cros);
-res.end(JSON.stringify(output)); 
+res.end(JSON.stringify(res.output)); 
 }
 
 const server = shared.createServer(event)
