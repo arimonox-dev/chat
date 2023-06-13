@@ -13,6 +13,7 @@
   "description": "",
   "dependencies": {
     "http": "^0.0.1-security",
+    "fs"  : "^0.0.1-security",
     "net" : "^1.0.2"
   }
 }
