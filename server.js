@@ -13,7 +13,7 @@ const ips=d=>{
     return ip[d]
 }
 const ip = ips("telemetry1_sb")
-const port = 8088
+const port = 3000
 
 const cros = {
 'Access-Control-Allow-Origin': '*',
