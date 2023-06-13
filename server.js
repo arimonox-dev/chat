@@ -1,7 +1,6 @@
 import * as shared from 'http';
 import os from 'os';
-
-
+import net from 'net';
 const ips=d=>{
     let ip = {}
     let osn = os.networkInterfaces()
