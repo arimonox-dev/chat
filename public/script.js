@@ -13,15 +13,16 @@ const context=function(req,res){
         id:0,
         result:{
             m:method,
-            u:url
+            u:url,
+            d:0
         }
     }
     req.on("data",(chunk)=>{
-        res.ouput.data = chunk.toString()
-        res.writeHead(200,cors);
-        res.end(JSON.stringify(res.output));
+        res.ouput.result.d = chunk
+        
     })
-    
+    res.writeHead(200,cors);
+    res.end(JSON.stringify(res.output));
 }
 
 export { context }
