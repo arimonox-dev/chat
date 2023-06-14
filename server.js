@@ -33,20 +33,21 @@ res.writeHead(200,cros);
 res.end(JSON.stringify(res.output)); 
 }
 
-const HTTP = shared.createServer(event).listen(port,ip,()=>{
-console.log(`server listing http://${ip}:${port}`)
-})
+const HTTP = shared.createServer(event)
 
+const memory = []
 const server = engine.attach(HTTP);
 
 server.on('connection', (socket) => {
   console.log('Client connected');
-
+  
   socket.on('message', (data) => {
+      
     console.log('Received message:', data);
-
     // Kirim pesan ke klien
+    
     socket.send('Hello from the server!');
+    
   });
 
   socket.on('close', () => {
@@ -55,3 +56,7 @@ server.on('connection', (socket) => {
   
   
 });
+
+HTTP.listen(port,ip,()=>{
+console.log(`server listing http://${ip}:${port}`)
+})
