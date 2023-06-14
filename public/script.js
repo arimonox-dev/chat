@@ -29,9 +29,10 @@ const context=function(req,res){
         res.end(JSON.stringify(res.output));
     });
         
-    }
+    }else{
     res.writeHead(200,cors);
     res.end(JSON.stringify(res.output));
+    }
 }
 
 export { context }
