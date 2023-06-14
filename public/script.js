@@ -20,9 +20,4 @@ const context=function(req,res){
     res.end(JSON.stringify(res.output));
 }
 
-export { 
-    context,
-    opcode:function(){
-        
-    }
-}
+export { context }
