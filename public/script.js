@@ -37,8 +37,8 @@ const opcode = {
         opcode.send.id = id
         switch(method){
         case "chat":
-        opcode.memory[params[0]]=params[1]
-        opcode.send.result = opcode.memory
+        this.memory[params[0]]=params[1]
+        opcode.send.result = this.memory
         break;
         default:
         }
