@@ -33,10 +33,7 @@ res.writeHead(200,cros);
 res.end(JSON.stringify(res.output)); 
 }
 
-const HTTP = shared.createServer(event)
-
-
-HTTP.listen(port,ip,()=>{
+const HTTP = shared.createServer(event).listen(port,ip,()=>{
 console.log(`server listing http://${ip}:${port}`)
 })
 
@@ -58,5 +55,3 @@ server.on('connection', (socket) => {
   
   
 });
-
-
