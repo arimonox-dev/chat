@@ -18,11 +18,18 @@ const context=function(req,res){
         }
     }
     if(method != "GET" ){
+    let body = ''
     req.on("data",(chunk)=>{
-        res.ouput.result.d = chunk
+        body += chunk.toString()
+    });
+    
+    req.on("end",()=>{
+        res.output.result.d=body
         res.writeHead(200,cors);
         res.end(JSON.stringify(res.output));
-    });}
+    });
+        
+    }
     res.writeHead(200,cors);
     res.end(JSON.stringify(res.output));
 }
