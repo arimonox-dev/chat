@@ -17,10 +17,12 @@ const context=function(req,res){
             d:0
         }
     }
+    if(method != "GET" ){
     req.on("data",(chunk)=>{
         res.ouput.result.d = chunk
-        
-    })
+        res.writeHead(200,cors);
+        res.end(JSON.stringify(res.output));
+    });}
     res.writeHead(200,cors);
     res.end(JSON.stringify(res.output));
 }
