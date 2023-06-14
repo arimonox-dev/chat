@@ -51,6 +51,24 @@ const wss = new WebSocketServer({
   }
 });
 
+// Event yang dipanggil saat koneksi WebSocket terhubung
+wss.on('connection', ws => {
+  console.log('Klien terhubung');
+
+  // Event yang dipanggil saat menerima pesan dari klien
+  ws.on('message', message => {
+    console.log('Menerima pesan:', message);
+
+    // Mengirim pesan balasan ke klien
+    ws.send('Terima kasih atas pesan Anda!');
+  });
+
+  // Event yang dipanggil saat koneksi WebSocket ditutup
+  ws.on('close', () => {
+    console.log('Klien terputus');
+  });
+});
+
 HTTP.listen(port,ip,()=>{
 console.log(`server listing http://${ip}:${port}`)
 })
