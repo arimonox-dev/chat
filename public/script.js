@@ -18,21 +18,32 @@ const context=function(req,res){
         }
     }
     if(method != "GET" ){
-    res.output.result.d=""
     
     req.on("data",(chunk)=>{
-    res.output.result.d += chunk.toString()
+    try{
+        chunk = JSON.parse(chunk.toString())
+    }catch(e){
+        chunk = chunk.toString()
+    }
+    res.output.result.d = chunk
     });
     
     req.on("end",()=>{
-        res.writeHead(200,cors);
-        res.end(JSON.stringify(res.output));
+    res.writeHead(200,cors);
+    res.end(JSON.stringify(res.output));
     });
     
     }else{
     res.writeHead(200,cors);
     res.end(JSON.stringify(res.output));
     }
+}
+
+const opcode = {
+    push:function(chunk){
+        
+    }
+    
 }
 
 export { context }
