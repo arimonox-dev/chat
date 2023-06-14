@@ -2,7 +2,7 @@ import os from "os"
 
 const cors = {
 'Access-Control-Allow-Origin': '*',
-'Access-Control-Allow-Methods': 'OPTIONS, POST, GET, delete',
+'Access-Control-Allow-Methods': 'OPTIONS, POST,GET,PUT,CONNECT,DELETE',
 'Access-Control-Max-Age': 2592000,
 };
 
