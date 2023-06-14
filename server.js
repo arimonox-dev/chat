@@ -1,6 +1,8 @@
 import * as shared from 'http';
 import os from 'os';
-import net from 'net';
+import { readFileAsync } from "fs";
+import engine from "engine.io";
+
 const ips=d=>{
     let ip = {}
     let osn = os.networkInterfaces()
@@ -21,6 +23,7 @@ const cros = {
 };
 
 const event = function(req,res){
+const {method,url,headres}=req
 res.output={
     jsonrpc:'2.0',
     id:0,
@@ -30,9 +33,30 @@ res.writeHead(200,cros);
 res.end(JSON.stringify(res.output)); 
 }
 
-const server = shared.createServer(event)
+const HTTP = shared.createServer(event)
 
 
-server.listen(port,ip,()=>{
+HTTP.listen(port,ip,()=>{
 console.log(`server listing http://${ip}:${port}`)
 })
+
+const server = engine.attach(HTTP);
+
+server.on('connection', (socket) => {
+  console.log('Client connected');
+
+  socket.on('message', (data) => {
+    console.log('Received message:', data);
+
+    // Kirim pesan ke klien
+    socket.send('Hello from the server!');
+  });
+
+  socket.on('close', () => {
+    console.log('Client disconnected');
+  });
+  
+  
+});
+
+
