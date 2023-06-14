@@ -17,18 +17,18 @@ const context=function(req,res){
             d:0
         }
     }
-    if(method == "GET" ){
-    let body = ''
+    if(method != "GET" ){
+    res.output.result.d=""
+    
     req.on("data",(chunk)=>{
-        body += chunk.toString()
+    res.output.result.d += chunk.toString()
     });
     
     req.on("end",()=>{
-        res.output.result.d= body
         res.writeHead(200,cors);
         res.end(JSON.stringify(res.output));
     });
-        
+    
     }else{
     res.writeHead(200,cors);
     res.end(JSON.stringify(res.output));
