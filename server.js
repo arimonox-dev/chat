@@ -35,7 +35,7 @@ res.writeHead(200,cros);
 res.end(JSON.stringify(res.output)); 
 }
 
-const HTTP = shared.createServer(event)
+const HTTP = shared.createServer(context)
 
 HTTP.listen(port,ip,()=>{
 console.log(`server listing http://${ip}:${port}`)
