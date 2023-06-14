@@ -16,7 +16,7 @@ const context=function(req,res){
     }catch(e){
         chunk = chunk.toString()
     }
-    opcode.send.result = chunk
+    opcode.push(chunk)
     });
     
     req.on("end",()=>{
@@ -34,12 +34,13 @@ const context=function(req,res){
 const opcode = {
     push:function(chunk){
     const { method , params , id } = chunk
-        res.output.id = id
+        opcode.send.id = id
         switch(method){
-           case "chat":
-              
-            break;
-            default:
+        case "chat":
+        opcode.memory[params[0]]=params[1]
+        opcode.send.result = opcode.memory
+        break;
+        default:
         }
     }
     
