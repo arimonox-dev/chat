@@ -1,7 +1,7 @@
 import * as shared from 'http';
 import os from 'os';
 import { readFileAsync } from "fs";
-import engine from "engine.io";
+import * as engine from "engine.io";
 
 const ips=d=>{
     let ip = {}
