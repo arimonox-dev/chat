@@ -8,42 +8,41 @@ const cors = {
 
 const context=function(req,res){
     const {method,url,headres}=req
-    res.output={
-        jsonrpc:'2.0',
-        id:0,
-        result:{
-            m:method,
-            u:url,
-            d:0
-        }
-    }
+
     if(method != "GET" ){
-    
     req.on("data",(chunk)=>{
     try{
         chunk = JSON.parse(chunk.toString())
     }catch(e){
         chunk = chunk.toString()
     }
-    res.output.result.d = chunk
+    opcode.send.result = chunk
     });
     
     req.on("end",()=>{
     res.writeHead(200,cors);
-    res.end(JSON.stringify(res.output));
+    res.end(JSON.stringify(opcode.send));
     });
     
     }else{
+    opcode.send.result = opcode.memory
     res.writeHead(200,cors);
-    res.end(JSON.stringify(res.output));
+    res.end(JSON.stringify(opcode.send));
     }
 }
 
 const opcode = {
     push:function(chunk){
-        
+    const { method , params , id } = chunk
+        res.output.id = id
+        switch(method){
+           case "chat":
+              
+            break;
+            default:
+        }
     }
     
 }
 
-export { context }
+export { context , opcode }
