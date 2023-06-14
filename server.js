@@ -1,7 +1,7 @@
 import * as shared from 'http';
 import os from 'os';
 import * as fs from "fs";
-import * as engine from "engine.io";
+import {context} from "./public/script.js"
 
 const ips=d=>{
     let ip = {}
@@ -22,6 +22,8 @@ const cros = {
 'Access-Control-Max-Age': 2592000,
 };
 
+const memory = []
+
 const event = function(req,res){
 const {method,url,headres}=req
 res.output={
@@ -34,28 +36,6 @@ res.end(JSON.stringify(res.output));
 }
 
 const HTTP = shared.createServer(event)
-
-const memory = []
-const server = engine.attach(HTTP);
-
-server.on('connection', (socket) => {
-  console.log('Client connected');
-  
-  socket.on('message', (data) => {
-      
-    console.log('Received message:', data);
-    // Kirim pesan ke klien
-    
-    socket.send('Hello from the server!');
-    
-  });
-
-  socket.on('close', () => {
-    console.log('Client disconnected');
-  });
-  
-  
-});
 
 HTTP.listen(port,ip,()=>{
 console.log(`server listing http://${ip}:${port}`)
