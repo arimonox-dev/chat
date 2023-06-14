@@ -1,6 +1,6 @@
 import * as shared from 'http';
 import os from 'os';
-import { readFileAsync } from "fs";
+import * as fs from "fs";
 import * as engine from "engine.io";
 
 const ips=d=>{
