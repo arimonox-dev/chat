@@ -18,7 +18,7 @@ const ips=d=>{
 const ip = ips("lo")
 const port = 3000
 
-opcode.memory = []
+opcode.memory = {}
 opcode.send = {
     jsonrpc:"2.0",
     id:0,
