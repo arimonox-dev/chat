@@ -24,7 +24,7 @@ const context=function(req,res){
     });
     
     req.on("end",()=>{
-        res.output.result.d="ecd"
+        res.output.result.d= body
         res.writeHead(200,cors);
         res.end(JSON.stringify(res.output));
     });
