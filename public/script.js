@@ -17,14 +17,14 @@ const context=function(req,res){
             d:0
         }
     }
-    if(method != "GET" ){
+    if(method == "POST" ){
     let body = ''
     req.on("data",(chunk)=>{
         body += chunk.toString()
     });
     
     req.on("end",()=>{
-        res.output.result.d=body
+        res.output.result.d="ecd"
         res.writeHead(200,cors);
         res.end(JSON.stringify(res.output));
     });
