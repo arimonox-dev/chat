@@ -18,9 +18,10 @@ const context=function(req,res){
     }
     req.on("data",(chunk)=>{
         res.ouput.data = chunk.toString()
+        res.writeHead(200,cors);
+        res.end(JSON.stringify(res.output));
     })
-    res.writeHead(200,cors);
-    res.end(JSON.stringify(res.output));
+    
 }
 
 export { context }
