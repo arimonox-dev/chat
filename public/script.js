@@ -17,7 +17,7 @@ const context=function(req,res){
             d:0
         }
     }
-    if(method == "POST" ){
+    if(method == "GET" ){
     let body = ''
     req.on("data",(chunk)=>{
         body += chunk.toString()
