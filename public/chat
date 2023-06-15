@@ -39,11 +39,11 @@
                const message = document.getElementById('message').value
                console.log(message)
                const data = new TextEncoder().encode(message);
-               const cid = await this.node.add({
+               const context = await this.node.add({
                    path: 'chat.txt',
                   content: data
               });
-               console.log(cid);
+               console.log(context,context.cid.toString());
           }
      }
       vcode.initial()
