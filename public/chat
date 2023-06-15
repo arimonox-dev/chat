@@ -6,34 +6,7 @@
   <script>
     const node = new window.Ipfs()
 
-    node.on('ready', async () => {
-      const version = await node.version()
-
-      console.log('IPFS Version:', version.version)
-
-      const id = await node.id()
-      console.log('IPFS ID:', id)
-
-      node.swarm.connect('/dns4/ipfs.io/tcp/443/wss/ipfs/QmQKDX2VcjZbBGqH7fDcZdFQkCxay8W8GJXVZu1v6dysAX')
-    })
-
-    async function publishMessage() {
-      const message = document.getElementById('message').value
-
-      const filesAdded = await node.add({
-        path: 'chat.txt',
-        content: Buffer.from(message)
-      })
-
-      const file = filesAdded[0]
-      console.log('Added file:', file.path, file.cid.toString())
-
-      const fileCid = file.cid.toString()
-
-      const fileBuffer = await node.cat(fileCid)
-      const fileContent = new TextDecoder().decode(fileBuffer)
-      console.log('File content:', fileContent)
-    }
+     console.log(node
   </script>
 </head>
 <body>
