@@ -10,7 +10,7 @@
               this.node = await Ipfs.create()
               this.id = await(await this.node.id()).id.toString()
               this.node.swarm.connect('/dns4/bootstrap.libp2p.io/tcp/443/wss/p2p/QmNnooDu7bfCQ5mc2pXfVW48y17NMx3jYz7vxnJ1xEGV3W')
-              this.pubsub = await this.node.pubsb
+              this.chat = await this.node.pubsub
           }
      }
       sec.initial()
