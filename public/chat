@@ -58,7 +58,7 @@
           }
      }
       vcode.initial()
-      console.log(vcode)
+      console.log(javaHash)
   </script>
 </head>
 <body>
