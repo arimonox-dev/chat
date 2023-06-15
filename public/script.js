@@ -1,5 +1,5 @@
 import os from "os"
-import * as file from "fs"
+import { readFileSync } from "fs"
 
 const cors = {
 'Access-Control-Allow-Origin': '*',
@@ -46,9 +46,9 @@ const opcode = {
     },
     html:function(url){
         try {
-        this.send = file.readFileAsync(`./public${url}`) 
+        this.send = readFileSync(`./public${url}`,"utf8") 
         }catch(e){
-            this.send.result = opcode.memory
+            this.send.result = this.memory
             this.send=JSON.stringify(this.send)
         }
     }
