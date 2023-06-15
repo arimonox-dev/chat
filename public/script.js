@@ -26,9 +26,9 @@ const context=function(req,res){
     });
     
     }else{
-    
+    opcode.html(url)
     res.writeHead(200,cors);
-    res.end(JSON.stringify(opcode.send));
+    res.end(opcode.send);
     }
 }
 
