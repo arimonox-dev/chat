@@ -6,7 +6,7 @@
   <script>
     const node = new window.Ipfs()
 
-     console.log(node
+     console.log(node)
   </script>
 </head>
 <body>
