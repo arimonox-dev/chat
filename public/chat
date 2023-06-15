@@ -13,7 +13,7 @@
           }
      }
     
-   console.log(server)
+   console.log('Hallo')
   </script>
 </head>
 <body>
