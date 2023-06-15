@@ -12,8 +12,28 @@
               this.node.swarm.connect('/dns4/bootstrap.libp2p.io/tcp/443/wss/p2p/QmNnooDu7bfCQ5mc2pXfVW48y17NMx3jYz7vxnJ1xEGV3W')
               this.chat = await this.node.pubsub
               this.chat.topic = "viChat"
-              this.chat.publishMessage=function(){}
-              this.chat.subscribeToTopic=function(){}
+              this.chat.publishMessage = async function(message){
+                 try {
+                    const data = new TextEncoder().encode(message);
+                   // Mengirim pesan ke topik yang diberikan
+                   await this.node.pubsub.publish(this.chat.topic, data);
+                  console.log('Pesan terkirim!');
+                  } catch (error) {
+                      console.error('Terjadi kesalahan saat mengirim pesan:', error);
+                  }
+              }
+              this.chat.subscribeToTopic = async function(){
+                  try {
+                     // Melakukan subscribe ke topik yang diberikan
+                    await this.node.pubsub.subscribe(this.chat.topic, (message) => {
+                        const data = message.data.toString();
+                      console.log('Pesan diterima:', data);
+                   });
+                    console.log('Berlangganan ke topik berhasil!');
+                } catch (error) {
+                  console.error('Terjadi kesalahan saat berlangganan:', error);
+                }
+              }
           }
      }
       sec.initial()
