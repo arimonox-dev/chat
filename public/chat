@@ -48,7 +48,7 @@
                
                const data = new TextEncoder().encode(message);
                const context = await this.node.add({
-                   path: 'chat.txt',
+                   path: 'block01.bin',
                   content: data
               });
                const file = `/ipfs/${context.cid.toString()}/${context.path}`
