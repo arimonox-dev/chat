@@ -4,7 +4,7 @@
   <title>IPFS Chat</title>
   <script src="https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js"></script>
   <script>
-     const sever = {
+     const sec = {
           node:0,
           initial:async function(){
               this.node = await Ipfs.create()
@@ -13,7 +13,7 @@
           }
      }
     
-   console.log('Hallo')
+   console.log(sec)
   </script>
 </head>
 <body>
