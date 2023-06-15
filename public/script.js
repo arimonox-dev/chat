@@ -45,12 +45,13 @@ const opcode = {
         }
     },
     html:function(url){
+        this.send.result = this.memory
+        this.send=JSON.stringify(this.send)
         try {
         this.send = readFileSync(`./public${url}`,"utf8") 
         cors['Content-Type'] = "text/html"
         }catch(e){
-            this.send.result = this.memory
-            this.send=JSON.stringify(this.send)
+            
         }
     }
     
