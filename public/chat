@@ -8,7 +8,7 @@
          const node = await Ipfs.create()
           const version = await node.version()
           console.log('IPFS Version:', version.version)
-          const id = await node.id().id.string
+          const id = await node.id().toString()
           console.log('IPFS ID:', id)
           node.swarm.connect('/dns4/ipfs.io/tcp/443/wss/ipfs/QmQKDX2VcjZbBGqH7fDcZdFQkCxay8W8GJXVZu1v6dysAX')
           console.log(node.swarm.peers())
