@@ -11,14 +11,7 @@
           const id = await node.id()
           console.log('IPFS ID:', id)
           node.swarm.connect('/dns4/ipfs.io/tcp/443/wss/ipfs/QmQKDX2VcjZbBGqH7fDcZdFQkCxay8W8GJXVZu1v6dysAX')
-    node.swarm.peers().then((peers) => {
-              peers.forEach((peer) => {
-          const peerID = peer.peer.toString();
-
-      });
-  }).catch((error) => {
-    console.error("Terjadi kesalahan saat mendapatkan daftar peer:", error);
-  });
+          console.log(node.swarm)
      }
 
      main()
