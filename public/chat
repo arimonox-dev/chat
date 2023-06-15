@@ -16,9 +16,8 @@
                  try {
                     const message = document.getElementById('message').value
                     const data = new TextEncoder().encode(message);
-                   // Mengirim pesan ke topik yang diberikan
-                   await this.node.pubsub.publish(this.chat.topic, data);
-                  console.log('Pesan terkirim!');
+                    await this.node.pubsub.publish(this.chat.topic, data);
+                    console.log('Pesan terkirim!');
                   } catch (error) {
                       console.error('Terjadi kesalahan saat mengirim pesan:', error);
                   }
@@ -39,7 +38,9 @@
           send:async function(){
              const message = document.getElementById('message').value
                console.log(message)
-               await this.chat.publishMessage()
+               const data = new TextEncoder().encode(message);
+               await this.node.pubsub.publish(this.chat.topic, data);
+               console.log('Pesan terkirim!');
           }
      }
       vcode.initial()
