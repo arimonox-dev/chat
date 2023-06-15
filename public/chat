@@ -43,7 +43,7 @@
                    path: 'chat.txt',
                   content: data
               });
-               console.log(context,context.cid.toString());
+               console.log(context.path,context.cid.toString());
           }
      }
       vcode.initial()
