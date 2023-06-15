@@ -23,19 +23,19 @@
 
     async function publishMessage(topic, message) {
         try {
+main()
             const data = new TextEncoder.encode(message)
-        // Mengirim pesan ke topik yang diberikan
-         await server.pubsub.publish(topic, data);
-
-        console.log('Pesan terkirim!');
+           await server.pubsub.publish(topic, data);
+           console.log('Pesan terkirim!');
+main()
        } catch (error) {
         console.error('Terjadi kesalahan saat mengirim pesan:', error);
       }
    }
 
-     main()
+     
     const message = 'Halo, dunia!';
-   publishMessage(topic, message);
+    publishMessage(topic, message);
   </script>
 </head>
 <body>
