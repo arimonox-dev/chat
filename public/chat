@@ -4,7 +4,7 @@
   <title>IPFS Chat</title>
   <script src="https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js"></script>
   <script>
-     const setup = {
+     const vcode = {
           node:0,
           initial:async function(){
               this.node = await Ipfs.create()
@@ -37,13 +37,13 @@
               }
           }
      }
-      setup.initial()
-      console.log(sec)
+      vcode.initial()
+      console.log(vcode)
   </script>
 </head>
 <body>
   <h1>IPFS Chat</h1>
   <input type="text" id="message" placeholder="Type your message">
-  <button onclick="setup.chat.publishMessage()">Publish</button>
+  <button onclick="vcode.chat.publishMessage()">Publish</button>
 </body>
 </html>
