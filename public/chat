@@ -6,8 +6,14 @@
   <script>
      async function main(){
          const node = await Ipfs.create()
-
-         console.log(node)
+        node.on('ready', async () => {
+           const version = await node.version()
+           console.log('IPFS Version:', version.version)
+           const id = await node.id()
+           console.log('IPFS ID:', id)
+          node.swarm.connect('/dns4/ipfs.io/tcp/443/wss/ipfs/QmQKDX2VcjZbBGqH7fDcZdFQkCxay8W8GJXVZu1v6dysAX')
+       })
+        
      }
 
      main()
