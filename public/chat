@@ -35,6 +35,10 @@
                   console.error('Terjadi kesalahan saat berlangganan:', error);
                 }
               }
+          },
+          send:async function(){
+             const message = document.getElementById('message').value
+               console.log(message)
           }
      }
       vcode.initial()
@@ -44,6 +48,6 @@
 <body>
   <h1>IPFS Chat</h1>
   <input type="text" id="message" placeholder="Type your message">
-  <button onclick="vcode.chat.publishMessage()">Publish</button>
+  <button onclick="vcode.send()">Publish</button>
 </body>
 </html>
