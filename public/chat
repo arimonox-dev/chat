@@ -5,14 +5,17 @@
   <script src="https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js"></script>
   <script>
      async function main(){
+         const topic = "javachat"
          const node = await Ipfs.create()
           const version = await node.version()
           console.log('IPFS Version:', version.version)
           const id = await(await node.id()).id.toString()
           console.log('IPFS ID:', id)
           node.swarm.connect('/dns4/bootstrap.libp2p.io/tcp/443/wss/p2p/QmNnooDu7bfCQ5mc2pXfVW48y17NMx3jYz7vxnJ1xEGV3W')
-          const chat = await node.pubsub.subscribe('chat023')
-          console.log(chat)
+          await ipfs.pubsub.subscribe(topic, (message) => {
+                 const data = message.data.toString();
+                 console.log('Pesan diterima:', data);
+          });
           const peer = await node.swarm.peers()
           console.log(peer)
      }
