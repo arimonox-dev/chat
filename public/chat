@@ -1,77 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Chat</title>
-  <style>
-    .chat-container {
-      width: 400px;
-      height: 500px;
-      border: 1px solid #ccc;
-      overflow-y: scroll;
-    }
-
-    .message {
-      padding: 10px;
-      margin-bottom: 5px;
-      background-color: #f2f2f2;
-      border-radius: 5px;
-    }
-
-    .user-message {
-      background-color: #d2f4fc;
-    }
-
-    .bot-message {
-      background-color: #f8d4fc;
-    }
-
-    .input-container {
-      margin-top: 10px;
-    }
-  </style>
-</head>
-<body>
-  <div class="chat-container">
-    <div class="message user-message">
-      User: Hello, how can I help you?
-    </div>
-    <div class="message bot-message">
-      Bot: I'm the chatbot. How can I assist you today?
-    </div>
-  </div>
-
-  <div class="input-container">
-    <input type="text" id="user-input" placeholder="Type your message...">
-    <button onclick="sendMessage()">Send</button>
-  </div>
-
+  <title>IPFS Chat</title>
+  <script src="https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js"></script>
   <script>
-    function sendMessage() {
-      var userInput = document.getElementById('user-input').value;
-      var chatContainer = document.querySelector('.chat-container');
+    const node = new window.Ipfs()
 
-      // Create user message element
-      var userMessage = document.createElement('div');
-      userMessage.classList.add('message', 'user-message');
-      userMessage.textContent = 'User: ' + userInput;
+    node.on('ready', async () => {
+      const version = await node.version()
 
-      // Append user message to chat container
-      chatContainer.appendChild(userMessage);
+      console.log('IPFS Version:', version.version)
 
-      // Simulate bot response
-      var botMessage = document.createElement('div');
-      botMessage.classList.add('message', 'bot-message');
-      botMessage.textContent = 'Bot: Thank you for your message.';
+      const id = await node.id()
+      console.log('IPFS ID:', id)
 
-      // Append bot message to chat container
-      chatContainer.appendChild(botMessage);
+      node.swarm.connect('/dns4/ipfs.io/tcp/443/wss/ipfs/QmQKDX2VcjZbBGqH7fDcZdFQkCxay8W8GJXVZu1v6dysAX')
+    })
 
-      // Clear user input
-      document.getElementById('user-input').value = '';
+    async function publishMessage() {
+      const message = document.getElementById('message').value
 
-      // Scroll to the bottom of the chat container
-      chatContainer.scrollTop = chatContainer.scrollHeight;
+      const filesAdded = await node.add({
+        path: 'chat.txt',
+        content: Buffer.from(message)
+      })
+
+      const file = filesAdded[0]
+      console.log('Added file:', file.path, file.cid.toString())
+
+      const fileCid = file.cid.toString()
+
+      const fileBuffer = await node.cat(fileCid)
+      const fileContent = new TextDecoder().decode(fileBuffer)
+      console.log('File content:', fileContent)
     }
   </script>
+</head>
+<body>
+  <h1>IPFS Chat</h1>
+  <input type="text" id="message" placeholder="Type your message">
+  <button onclick="publishMessage()">Publish</button>
 </body>
 </html>
