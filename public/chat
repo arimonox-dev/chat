@@ -4,9 +4,13 @@
   <title>IPFS Chat</title>
   <script src="https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js"></script>
   <script>
-    
+     async function main(){
+         const node = await Ipfs.create()
 
-     console.log(window)
+         console.log(node)
+     }
+
+     main()
   </script>
 </head>
 <body>
