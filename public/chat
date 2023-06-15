@@ -11,7 +11,7 @@
           const id = await(await node.id()).id.toString()
           console.log('IPFS ID:', id)
           node.swarm.connect('/dns4/bootstrap.libp2p.io/tcp/443/wss/p2p/QmNnooDu7bfCQ5mc2pXfVW48y17NMx3jYz7vxnJ1xEGV3W')
-          const chat = await node.swarm
+          const chat = await node.swarm.connect(id)
           console.log(chat)
           const peer = await node.swarm.peers()
           console.log(peer)
