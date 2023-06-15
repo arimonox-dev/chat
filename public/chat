@@ -12,6 +12,8 @@
               this.node.swarm.connect('/dns4/bootstrap.libp2p.io/tcp/443/wss/p2p/QmNnooDu7bfCQ5mc2pXfVW48y17NMx3jYz7vxnJ1xEGV3W')
               this.chat = await this.node.pubsub
               this.chat.topic = "viChat"
+              this.chat.publishMessage=function(){}
+              this.chat.subscribeToTopic=function(){}
           }
      }
       sec.initial()
