@@ -35,15 +35,24 @@
                 }
               }
           },
+          searchFileByPath:async function(path){
+              try {
+                  const fileStats = await this.node.files.stat(path);
+                  console.log('Informasi File:', fileStats);
+                } catch (error) {
+                    console.error('Terjadi kesalahan saat mencari file:', error);
+                 }
+          },
           send:async function(){
                const message = document.getElementById('message').value
-               console.log(message)
+               
                const data = new TextEncoder().encode(message);
                const context = await this.node.add({
                    path: 'chat.txt',
                   content: data
               });
-               console.log(context.path,context.cid.toString());
+               const file = `/ipfs/${context.cid.toString()}/context.path`
+               console.log(file);
           }
      }
       vcode.initial()
