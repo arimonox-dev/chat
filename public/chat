@@ -4,38 +4,16 @@
   <title>IPFS Chat</title>
   <script src="https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js"></script>
   <script>
-     const sever = 0
-     async function main(){
-         const topic = "javachat"
-          sever = await Ipfs.create()
-          const version = await server.version()
-          console.log('IPFS Version:', version.version)
-          const id = await(await server.id()).id.toString()
-          console.log('IPFS ID:', id)
-          server.swarm.connect('/dns4/bootstrap.libp2p.io/tcp/443/wss/p2p/QmNnooDu7bfCQ5mc2pXfVW48y17NMx3jYz7vxnJ1xEGV3W')
-          await server.pubsub.subscribe(topic, (message) => {
-                 const data = message.data.toString();
-                 console.log('Pesan diterima:', data);
-          });
-          const peer = await sever.swarm.peers()
-          console.log(peer)
+     const sever = {
+          node:0,
+          initial:async function(){
+              this.node = await Ipfs.create()
+              this.id = await(await this.node.id()).id.toString()
+              this.node.swarm.connect('/dns4/bootstrap.libp2p.io/tcp/443/wss/p2p/QmNnooDu7bfCQ5mc2pXfVW48y17NMx3jYz7vxnJ1xEGV3W')
+          }
      }
-
-    async function publishMessage(topic, message) {
-        try {
-main()
-            const data = new TextEncoder.encode(message)
-           await server.pubsub.publish(topic, data);
-           console.log('Pesan terkirim!');
-main()
-       } catch (error) {
-        console.error('Terjadi kesalahan saat mengirim pesan:', error);
-      }
-   }
-
-     
-    const message = 'Halo, dunia!';
-    publishMessage(topic, message);
+     sever.initial()
+   console.log(server)
   </script>
 </head>
 <body>
