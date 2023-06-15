@@ -11,7 +11,7 @@
           const id = await node.id()
           console.log('IPFS ID:', id)
           node.swarm.connect('/dns4/ipfs.io/tcp/443/wss/ipfs/QmQKDX2VcjZbBGqH7fDcZdFQkCxay8W8GJXVZu1v6dysAX')
-          console.log(node.swarm)
+          console.log(node.swarm.peers())
      }
 
      main()
