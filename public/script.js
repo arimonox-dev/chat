@@ -1,4 +1,5 @@
 import os from "os"
+import * as file from "fs"
 
 const cors = {
 'Access-Control-Allow-Origin': '*',
@@ -25,7 +26,7 @@ const context=function(req,res){
     });
     
     }else{
-    opcode.send.result = opcode.memory
+    
     res.writeHead(200,cors);
     res.end(JSON.stringify(opcode.send));
     }
@@ -38,9 +39,17 @@ const opcode = {
         switch(method){
         case "chat":
         this.memory[params[0]]=params[1]
-        opcode.send.result = this.memory
+        this.send.result = this.memory
         break;
         default:
+        }
+    },
+    html:function(url){
+        try {
+        this.send = file.readFileAsync(`./public${url}`) 
+        }catch(e){
+            this.send.result = opcode.memory
+            this.send=JSON.stringify(this.send)
         }
     }
     
