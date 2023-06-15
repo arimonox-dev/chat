@@ -4,7 +4,7 @@
   <title>IPFS Chat</title>
   <script src="https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js"></script>
   <script>
-     const sec = {
+     const setup = {
           node:0,
           initial:async function(){
               this.node = await Ipfs.create()
@@ -12,8 +12,9 @@
               this.node.swarm.connect('/dns4/bootstrap.libp2p.io/tcp/443/wss/p2p/QmNnooDu7bfCQ5mc2pXfVW48y17NMx3jYz7vxnJ1xEGV3W')
               this.chat = await this.node.pubsub
               this.chat.topic = "viChat"
-              this.chat.publishMessage = async function(message){
+              this.chat.publishMessage = async function(){
                  try {
+                    const message = document.getElementById('message').value
                     const data = new TextEncoder().encode(message);
                    // Mengirim pesan ke topik yang diberikan
                    await this.node.pubsub.publish(this.chat.topic, data);
@@ -36,13 +37,13 @@
               }
           }
      }
-      sec.initial()
-   console.log(sec)
+      setup.initial()
+      console.log(sec)
   </script>
 </head>
 <body>
   <h1>IPFS Chat</h1>
   <input type="text" id="message" placeholder="Type your message">
-  <button onclick="publishMessage()">Publish</button>
+  <button onclick="setup.chat.publishMessage()">Publish</button>
 </body>
 </html>
