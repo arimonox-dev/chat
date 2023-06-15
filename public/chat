@@ -51,7 +51,7 @@
                    path: 'chat.txt',
                   content: data
               });
-               const file = `/ipfs/${context.cid.toString()}/context.path`
+               const file = `/ipfs/${context.cid.toString()}/${context.path}`
                console.log(file);
           }
      }
