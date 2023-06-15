@@ -36,11 +36,11 @@
               }
           },
           send:async function(){
-             const message = document.getElementById('message').value
+               const message = document.getElementById('message').value
                console.log(message)
                const data = new TextEncoder().encode(message);
-               await this.node.pubsub.publish(this.chat.topic, data);
-               console.log('Pesan terkirim!');
+               const cid = await this.node.add(data);
+               console.log(cid);
           }
      }
       vcode.initial()
