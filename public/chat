@@ -3,6 +3,7 @@
 <head>
   <title>IPFS Chat</title>
   <script src="https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js"></script>
+  <script src="../secure.js"></script>
   <script>
      const vcode = {
           node:0,
