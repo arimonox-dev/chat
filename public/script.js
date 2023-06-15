@@ -28,7 +28,7 @@ const context=function(req,res){
     }else{
     opcode.html(url)
     res.writeHead(200,cors);
-    res.end(opcode.send);
+    res.end(JSON.stringify(opcode.send));
     }
 }
 
