@@ -39,6 +39,7 @@
           send:async function(){
              const message = document.getElementById('message').value
                console.log(message)
+               await this.chat.publishMessage()
           }
      }
       vcode.initial()
