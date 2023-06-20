@@ -2,8 +2,6 @@
 <html>
 <head>
   <title>PENDATAAN WARGA RT.06</title>
-  <script src="https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js"></script>
-  <script src="./src/secure.js"></script>
   
 </head>
 <body>
