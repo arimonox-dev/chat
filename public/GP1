@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>IPFS Chat</title>
+  <title>PENDATAAN WARGA RT.06</title>
   <script src="https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js"></script>
   <script src="./src/secure.js"></script>
   
 </head>
 <body>
-  <h1>IPFS Chat</h1>
-  <input type="text" id="message" placeholder="Type your message">
-  <button onclick="vcode.send()">Publish</button>
+  <iframe id="myFrame" src="https://docs.google.com/forms/d/e/1FAIpQLSd5KW_wuHN7OX8R9jVjqltPvvvjhyioFCrxTUeq567qtI9o_g/viewform?pli=1"></iframe>
 </body>
 </html>
