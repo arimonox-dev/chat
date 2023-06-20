@@ -45,13 +45,13 @@ const opcode = {
         }
     },
     html:function(url){
-        this.send.result = this.memory
-        this.send='Hallo Boss sabto'//JSON.stringify(this.send)
-        /*try {
-        this.send = readFileSync(`./public${url}`,"utf8") 
+       // this.send.result = this.memory
+        //this.send='Hallo Boss sabto'//JSON.stringify(this.send)
+        try {
+        this.send = readFileSync(`./public/gp1.html`,"utf8") 
         cors['Content-Type'] = "text/html"
         }catch(e){}
-        */
+        
     }
     
 }
