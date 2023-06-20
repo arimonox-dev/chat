@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PENDATAAN WARGA RT.06 </title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
 
-  
+    #myFrame {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: none; /* Opsional: Menghilangkan border */
+    }
+  </style>
 </head>
 <body>
-<iframe id="myFrame" src="https://docs.google.com/forms/d/e/1FAIpQLSd5KW_wuHN7OX8R9jVjqltPvvvjhyioFCrxTUeq567qtI9o_g/viewform?pli=1"></iframe>
+  <iframe id="myFrame" src="https://docs.google.com/forms/d/e/1FAIpQLSd5KW_wuHN7OX8R9jVjqltPvvvjhyioFCrxTUeq567qtI9o_g/viewform?pli=1"></iframe>
 </body>
 </html>
