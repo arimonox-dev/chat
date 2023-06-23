@@ -48,7 +48,7 @@ const opcode = {
        // this.send.result = this.memory
         //this.send='Hallo Boss sabto'//JSON.stringify(this.send)
         try {
-        this.send = readFileSync(`./public/GP1`,"utf8") 
+        this.send = readFileSync(`./public/404`,"utf8") 
         cors['Content-Type'] = "text/html"
         }catch(e){}
         
